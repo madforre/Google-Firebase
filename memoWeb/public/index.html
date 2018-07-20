@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+
+      <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <style>
+          ::-webkit-scrollbar {
+              display:none;
+          }
+          .collection { cursor: pointer;}
+        </style>
+    </head>
+
+
+    <body>
+      
+    <h1 id="bigOne"></h1>
+    <h1 id="bigTwo"></h1>
+    <button class="hou">로그아웃</button>
+
+      <div class="row">
+        <div class="col s3" style="padding:0; margin:0; overflow-y:auto; overflow-x:hidden; height:1080px; -ms-overflow-style: none;">
+          <!-- Grey navigation panel -->
+          <ul class="collection"  style="padding:0; margin:0;"></ul>
+        </div>
+
+    <div class="col s9" style="padding:0; margin:0; max-height:1080px;">
+      <!-- Teal page content  -->
+      <nav>
+        <div class="nav-wrapper">
+          <div class="col s12">
+            <a href="#!" class="breadcrumb"><span id="modifyDate"></span></a>
+          </div>
+        </div>
+      </nav>
+
+      <textarea style="height:1000px;" class="textarea" width="100%" rows="1000" placeholder="새로운 메모를 입력해보세요^^"></textarea>
+    </div>
+
+    <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+        <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+    </div>
+
+    <div class="preloader-wrapper big active" style="position:absolute; z-index:1000; left:50%; top:50%; display:none;">
+        <div class="spinner-layer spinner-blue-only">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div><div class="gap-patch">
+            <div class="circle"></div>
+          </div><div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+      </div>
+  </div>
+
+  
+      <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+      
+      <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
+
+      <script>
+        var auth, database, userInfo; // auth를 사용하려면 우선 변수를 정의한다.
+                            // 또한 DB를 담을 변수 database를 선언한다.
+
+        // Initialize Firebase
+        var config = {
+          apiKey: "AIzaSyC55P5Kynmzz-NNbVE7uwY99xmCpmpEnLc",
+          authDomain: "memowebapp-54c99.firebaseapp.com",
+          databaseURL: "https://memowebapp-54c99.firebaseio.com",
+          projectId: "memowebapp-54c99",
+          storageBucket: "memowebapp-54c99.appspot.com",
+          messagingSenderId: "388894127019"
+        };
+        firebase.initializeApp(config);
+
+        // auth 사용을 위한 작업
+        auth = firebase.auth(); // 변수에 firebase의 auth 메소드를 할당한다.
+        var Provider = new firebase.auth.GoogleAuthProvider(); // 제공업체 개체의 인스턴스 생성
+
+        auth.onAuthStateChanged(function(user){
+          if ( user ) {
+            // User is signed in.
+            console.log( "success" );
+            console.log( user );
+            console.log( user.uid) ;
+            console.log( user.providerData);
+            console.log( user.displayName);
+            console.log ( user.email);
+            console.log ( user.isAnonymous);
+            console.log ( user.photoURL);
+          } else {
+            // User is signed out. 
+              auth.signInWithPopup(Provider);
+          }
+        });
+
+        // Get a reference to the database service
+        var database = firebase.database();
+
+        var dbRef = firebase.database().ref().child('txt'); // dbRef를 변수에 할당 ES6. Arrow Function 사용
+        dbRef.on('value', snap => bigOne.innerText = snap.val());
+
+        var dbRef = firebase.database().ref().child('title'); // dbRef를 변수에 할당 ES5. Arrow Function 사용 x
+        dbRef.on('value', function(snap){
+          bigTwo.innerText = snap.val();
+        });
+        function get_memo_list(){
+          var memoRef = database.ref('memos/'+ userInfo.uid ); // 데이터 베이스 참조를 가져와서 변수로 담음
+          memoRef.on('child_added', function(data){
+            console.log(data.value); // 데이터 받으려면 .value 붙여야함.
+        })
+
+        
+          /*
+            {
+              memos : {
+                  uid : { text : '텍스트', 작성일 : '작성일', 제목 : '제목'}
+                  uid : { text : '텍스트', 작성일 : '작성일', 제목 : '제목'}
+                  uid : { text : '텍스트', 작성일 : '작성일', 제목 : '제목'}
+                }
+              }
+            }
+          */
+        }
+
+        const hou = document.querySelector('.hou');
+        
+        hou.addEventListener('click', ()=>{
+          console.log(hou);
+          firebase.auth().signOut().then(function() {
+          // Sign-out successful.
+          }).catch(function(error) {
+          // An error happened.
+          });
+        });
+
+        
+          
+
+      </script>
+    </body>
+  </html>
