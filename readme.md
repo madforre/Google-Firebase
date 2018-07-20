@@ -1,35 +1,35 @@
-Firebase CLI 설치
+# Firebase CLI 설치
 
     npm install firebase-tools -g 
     (어디에서든 사용 가능하게 글로벌 설치)
 
     *안될시 sudo 이용하여 관리자 권한으로 실행
 
-firebase login 
+# firebase login 
 
     로그인 창이 뜬다.
 
     CLI에 정상적으로 로그인되면 success가 뜬다.
 
-firebase list
+# firebase list
 
     firebase에 있는 실제 프로젝트의 정보가 뜬다.
     보인다면 정상적으로 연결이 된 것이다.
 
-firebase init
+# firebase init
 
     초기화->여러가지 설정 선택 가능
 
     여기서 database 와 hosting을 선택해주자.
 
-firebase serve
+# firebase serve
 
     로컬 서버를 열어주는 기능
 
 파이어베이스는 데이터베이스를 바로 더미식으로 받아와서
 forEach 돌려서 렌더링 하는 방법이 아닌 비동기식, 콜백으로 데이터를 받아온다.
 
-* 데이터베이스 관련
+# 데이터베이스 관련
 
 정규화 vs 비정규화
 정규화
