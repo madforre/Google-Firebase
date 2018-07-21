@@ -1,0 +1,41 @@
+[debug] [2018-07-21T06:16:19.652Z] ----------------------------------------------------------------------
+[debug] [2018-07-21T06:16:19.655Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\madforre\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] [2018-07-21T06:16:19.655Z] CLI Version:   3.19.3
+[debug] [2018-07-21T06:16:19.655Z] Platform:      win32
+[debug] [2018-07-21T06:16:19.655Z] Node Version:  v8.11.3
+[debug] [2018-07-21T06:16:19.656Z] Time:          Sat Jul 21 2018 15:16:19 GMT+0900 (대한민국 표준시)
+[debug] [2018-07-21T06:16:19.656Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-07-21T06:16:19.671Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-07-21T06:16:19.672Z] > authorizing via signed-in user
+[debug] [2018-07-21T06:16:19.674Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-07-21T06:16:19.674Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/cI-79ohOubPPYCR9BbQutZF9-JmwGgaCNauOD5jK1Zk',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Sat Jul 21 2018 15:16:19 GMT+0900 (대한민국 표준시)
+[debug] [2018-07-21T06:16:20.041Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-21T06:16:20.049Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/memowebapp-54c99  
+  
+ Sat Jul 21 2018 15:16:20 GMT+0900 (대한민국 표준시)
+[debug] [2018-07-21T06:16:21.172Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-21T06:16:21.172Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/memowebapp-54c99/tokens  
+  
+ Sat Jul 21 2018 15:16:21 GMT+0900 (대한민국 표준시)
+[debug] [2018-07-21T06:16:21.982Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-21T06:16:21.984Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/memowebapp-54c99  
+  
+ Sat Jul 21 2018 15:16:21 GMT+0900 (대한민국 표준시)
+[debug] [2018-07-21T06:16:23.356Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'C:\xampp\htdocs\Google-Firebase\memoWeb'...
+[info] 
+[debug] [2018-07-21T06:16:23.363Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/388894127019/clients/_:getWebAppConfig  
+  
+ Sat Jul 21 2018 15:16:23 GMT+0900 (대한민국 표준시)
+[debug] [2018-07-21T06:16:24.380Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] +  hosting: Local server: http://localhost:5000
+

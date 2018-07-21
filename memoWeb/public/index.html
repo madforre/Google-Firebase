@@ -69,11 +69,11 @@
       <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
 
       <script>
-        var auth, database, userInfo; // auth를 사용하려면 우선 변수를 정의한다.
+        let auth, database, userInfo; // auth를 사용하려면 우선 변수를 정의한다.
                             // 또한 DB를 담을 변수 database를 선언한다.
 
         // Initialize Firebase
-        var config = {
+        const config = {
           apiKey: "AIzaSyC55P5Kynmzz-NNbVE7uwY99xmCpmpEnLc",
           authDomain: "memowebapp-54c99.firebaseapp.com",
           databaseURL: "https://memowebapp-54c99.firebaseio.com",
@@ -85,7 +85,7 @@
 
         // auth 사용을 위한 작업
         auth = firebase.auth(); // 변수에 firebase의 auth 메소드를 할당한다.
-        var Provider = new firebase.auth.GoogleAuthProvider(); // 제공업체 개체의 인스턴스 생성
+        const Google_Provider = new firebase.auth.GoogleAuthProvider(); // 제공업체 개체의 인스턴스 생성
 
         auth.onAuthStateChanged(function(user){
           if ( user ) {
@@ -100,25 +100,30 @@
             console.log ( user.photoURL);
           } else {
             // User is signed out. 
-              auth.signInWithPopup(Provider);
+              auth.signInWithPopup(Google_Provider);
           }
         });
 
         // Get a reference to the database service
-        var database = firebase.database();
+        database = firebase.database();
 
-        var dbRef = firebase.database().ref().child('txt'); // dbRef를 변수에 할당 ES6. Arrow Function 사용
+        let dbRef = firebase.database().ref().child('txt'); // dbRef를 변수에 할당 ES6. Arrow Function 사용
         dbRef.on('value', snap => bigOne.innerText = snap.val());
 
-        var dbRef = firebase.database().ref().child('title'); // dbRef를 변수에 할당 ES5. Arrow Function 사용 x
+        dbRef = firebase.database().ref().child('title'); // dbRef를 변수에 할당 ES5. Arrow Function 사용 x
         dbRef.on('value', function(snap){
           bigTwo.innerText = snap.val();
         });
+        
         function get_memo_list(){
-          var memoRef = database.ref('memos/'+ userInfo.uid ); // 데이터 베이스 참조를 가져와서 변수로 담음
+          const memoRef = database.ref('memos/'+ userInfo.uid ); // 데이터 베이스 참조를 가져와서 변수로 담음
           memoRef.on('child_added', function(data){
             console.log(data.value); // 데이터 받으려면 .value 붙여야함.
         })
+
+        function on_child_added(data){
+          console.log( data.val() );
+        }
 
         
           /*
@@ -132,6 +137,8 @@
             }
           */
         }
+
+        // 로그아웃
 
         const hou = document.querySelector('.hou');
         
