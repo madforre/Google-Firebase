@@ -171,4 +171,25 @@ every single query can also use this root reference variable.
 
 # Joins in the Firebase Database
 
+    추가예정
+
+# Listener
+
 firebase method - once() 한 번만 함수를 호출
+
+firebase method - on() 항상 수신대기, off를 통해 해제해야함.
+
+
+# Server Variables
+
+1. auth
+
+2. data
+
+3. new data (post)
+
+4. now (stamp of the current time on the server)
+
+5. root (bring you to the root of your database)
+
+6. $uid (we created with dollar UID)
