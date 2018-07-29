@@ -1,35 +1,43 @@
-# Firebase CLI 설치
+# Firebase (Google) 를 이용한 백앤드 플랫폼 구성
+
+* 구글로그인해야 사용이 가능한 메모앱 구현(현재 미완성이며 학습진행중)
+* 로그인 + 로그아웃 및 NoSQL JSON data를 렌더링
+* CRUD 추가 학습 및 구현 예정
+  
+--------------------------------------------
+
+## Firebase CLI 설치
 
     npm install firebase-tools -g 
     (어디에서든 사용 가능하게 글로벌 설치)
 
     *안될시 sudo 이용하여 관리자 권한으로 실행
 
-# firebase login 
+## firebase login 
 
     로그인 창이 뜬다.
 
     CLI에 정상적으로 로그인되면 success가 뜬다.
 
-# firebase list
+## firebase list
 
     firebase에 있는 실제 프로젝트의 정보가 뜬다.
     보인다면 정상적으로 연결이 된 것이다.
 
-# firebase init
+## firebase init
 
     초기화->여러가지 설정 선택 가능
 
     여기서 database 와 hosting을 선택해주자.
 
-# firebase serve
+## firebase serve
 
     로컬 서버를 열어주는 기능
 
 파이어베이스는 데이터베이스를 바로 더미식으로 받아와서
 forEach 돌려서 렌더링 하는 방법이 아닌 비동기식, 콜백으로 데이터를 받아온다.
 
-# 데이터베이스 관련
+## 데이터베이스 관련
 
 출처 https://gist.github.com/singun/bdceaa99ad61ee1296204454f797d579
 
@@ -43,7 +51,7 @@ forEach 돌려서 렌더링 하는 방법이 아닌 비동기식, 콜백으로 �
 * 하나의 테이블에서 자주 사용되는 행(레코드)와 그렇지 않은 행들을 분리하여 두 개의 테이블로 나눈다. (이런 경우에는 UNION으로 다시 연결시킨다.)
 * 다른 테이블에 의존적이지만 자주 JOIN하여 사용하는 컬럼을 중복하여 테이블 안에 하나 더 생성한다.
 
-# const db = firebase.database();
+## const db = firebase.database();
 
     const events = db.child('events/fm');
     const attendees = db.child('eventAttendees/fm');
@@ -64,7 +72,7 @@ synchronizing objects.
 And a child listener really works well for the attendees because attendees is a list, and child events work well for lists.
 
 
-# Firebase Database Querying 101
+## Firebase Database Querying 101
 
     const db = firebase.database(); // 데이터베이스 인스턴스 가져와서 변수에 담음. Get the database object.
     const eventsRef = db.child('events'); // 데이터베이스 인스턴스안의 이벤트를 참조. Create a reference to the parent key which is events.
@@ -105,7 +113,7 @@ There are actually four different ordering functions that you can use.
         // render data to HTML
     });
 
-# Eight SQL Queries -> Firebase Queries
+## Eight SQL Queries -> Firebase Queries
 
 To do this, we would create a route reference first.
 every single query can also use this root reference variable.
@@ -169,18 +177,18 @@ every single query can also use this root reference variable.
 
 * You can only use one ordering function in the Firebase SDK
 
-# Joins in the Firebase Database
+## Joins in the Firebase Database
 
     추가예정
 
-# Listener
+## Listener
 
 firebase method - once() 한 번만 함수를 호출
 
 firebase method - on() 항상 수신대기, off를 통해 해제해야함.
 
 
-# Server Variables
+## Server Variables
 
 1. auth
 
